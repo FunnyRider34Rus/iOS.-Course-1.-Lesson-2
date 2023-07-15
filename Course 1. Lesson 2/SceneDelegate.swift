@@ -12,9 +12,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     let navBarViewController = UITabBarController()
-    let friendsViewController = FriendsViewController()
-    let groupsViewController = GroupsViewController()
-    let photosViewController = PhotosViewController()
+    let friendsViewController = UINavigationController(rootViewController: FriendsViewController())
+    let groupsViewController = UINavigationController(rootViewController: GroupsViewController())
+    let photosViewController = UINavigationController(rootViewController: PhotosViewController(collectionViewLayout: UICollectionViewFlowLayout()))
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         

@@ -7,12 +7,31 @@
 
 import UIKit
 
-class PhotosViewController: UIViewController {
+class PhotosViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Photos"
-        view.backgroundColor = .white
+        collectionView.register(PhotoViewCell.self, forCellWithReuseIdentifier: "cell")
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return 6
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PhotoViewCell
+        
+        return cell
+    }
+}
+
+extension PhotosViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = UIScreen.main.bounds.width
+        let height = width / 2 - 20
+        return CGSize(width: height, height: height)
     }
 }

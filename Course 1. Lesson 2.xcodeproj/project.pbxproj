@@ -17,6 +17,7 @@
 		DCFBD99C2A62FF7800ED78AF /* FriendsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFBD99B2A62FF7800ED78AF /* FriendsViewCell.swift */; };
 		DCFBD99E2A6306D700ED78AF /* FriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFBD99D2A6306D700ED78AF /* FriendDetailViewController.swift */; };
 		DCFBD9A02A63185600ED78AF /* GroupViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFBD99F2A63185600ED78AF /* GroupViewCell.swift */; };
+		DCFBD9A22A63220400ED78AF /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFBD9A12A63220400ED78AF /* PhotoViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DCFBD99B2A62FF7800ED78AF /* FriendsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewCell.swift; sourceTree = "<group>"; };
 		DCFBD99D2A6306D700ED78AF /* FriendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailViewController.swift; sourceTree = "<group>"; };
 		DCFBD99F2A63185600ED78AF /* GroupViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewCell.swift; sourceTree = "<group>"; };
+		DCFBD9A12A63220400ED78AF /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				DCFBD99B2A62FF7800ED78AF /* FriendsViewCell.swift */,
 				DCFBD99D2A6306D700ED78AF /* FriendDetailViewController.swift */,
 				DCFBD99F2A63185600ED78AF /* GroupViewCell.swift */,
+				DCFBD9A12A63220400ED78AF /* PhotoViewCell.swift */,
 			);
 			path = "Course 1. Lesson 2";
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			files = (
 				DCFBD99C2A62FF7800ED78AF /* FriendsViewCell.swift in Sources */,
 				DCE972C72A6283DD00ED394A /* GroupsViewController.swift in Sources */,
+				DCFBD9A22A63220400ED78AF /* PhotoViewCell.swift in Sources */,
 				DC3FFECC2A617AC000F3E640 /* FriendsViewController.swift in Sources */,
 				DC3FFEC82A617AC000F3E640 /* AppDelegate.swift in Sources */,
 				DC3FFECA2A617AC000F3E640 /* SceneDelegate.swift in Sources */,
