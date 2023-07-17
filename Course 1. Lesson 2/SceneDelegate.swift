@@ -11,29 +11,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    let navBarViewController = UITabBarController()
-    let friendsViewController = UINavigationController(rootViewController: FriendsViewController())
-    let groupsViewController = UINavigationController(rootViewController: GroupsViewController())
-    let photosViewController = UINavigationController(rootViewController: PhotosViewController(collectionViewLayout: UICollectionViewFlowLayout()))
+    let authViewController = UINavigationController(rootViewController:AuthViewController())
+   
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let scene = (scene as? UIWindowScene) else { return }
         
-        friendsViewController.tabBarItem.title = "Friends"
-        friendsViewController.tabBarItem.image = UIImage(systemName: "person.2")
-        groupsViewController.tabBarItem.title = "Groups"
-        groupsViewController.tabBarItem.image = UIImage(systemName: "person.3")
-        photosViewController.tabBarItem.title = "Photos"
-        photosViewController.tabBarItem.image = UIImage(systemName: "photo")
-        
-        let controllers = [friendsViewController, groupsViewController, photosViewController]
-        
-        navBarViewController.viewControllers = controllers
-        navBarViewController.tabBar.backgroundColor = .white
-        
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = navBarViewController
+        window?.rootViewController = authViewController
         window?.makeKeyAndVisible()
     }
 }
