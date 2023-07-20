@@ -15,6 +15,8 @@ class FriendsViewController: UITableViewController {
         title = "Friends"
         view.backgroundColor = .white
         tableView.backgroundColor = .white
+        let request = NetworkService()
+        request.getFriends()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

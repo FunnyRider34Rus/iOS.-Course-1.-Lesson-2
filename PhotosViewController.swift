@@ -14,6 +14,8 @@ class PhotosViewController: UICollectionViewController {
         
         title = "Photos"
         collectionView.register(PhotoViewCell.self, forCellWithReuseIdentifier: "cell")
+        let request = NetworkService()
+        request.getPhoto()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

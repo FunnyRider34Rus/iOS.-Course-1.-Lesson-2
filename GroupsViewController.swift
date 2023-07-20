@@ -15,6 +15,8 @@ class GroupsViewController: UITableViewController {
         title = "Groups"
         view.backgroundColor = .white
         tableView.backgroundColor = .white
+        let request = NetworkService()
+        request.getGroups()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

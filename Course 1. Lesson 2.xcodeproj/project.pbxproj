@@ -13,6 +13,11 @@
 		DC3FFED12A617AC300F3E640 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC3FFED02A617AC300F3E640 /* Assets.xcassets */; };
 		DC3FFED42A617AC300F3E640 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC3FFED22A617AC300F3E640 /* LaunchScreen.storyboard */; };
 		DC90A7FF2A65B68000AF1197 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC90A7FE2A65B68000AF1197 /* AuthViewController.swift */; };
+		DCD7277E2A69A5DB00A44624 /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD7277D2A69A5DB00A44624 /* AppConst.swift */; };
+		DCD727802A69ABCE00A44624 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD7277F2A69ABCE00A44624 /* NetworkService.swift */; };
+		DCD727832A69AE0B00A44624 /* FriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD727822A69AE0B00A44624 /* FriendsModel.swift */; };
+		DCD727852A69B08700A44624 /* GroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD727842A69B08700A44624 /* GroupsModel.swift */; };
+		DCD727872A69BE1700A44624 /* PhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD727862A69BE1700A44624 /* PhotosModel.swift */; };
 		DCE972C72A6283DD00ED394A /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE972C62A6283DD00ED394A /* GroupsViewController.swift */; };
 		DCE972C92A6283F300ED394A /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE972C82A6283F300ED394A /* PhotosViewController.swift */; };
 		DCFBD99C2A62FF7800ED78AF /* FriendsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFBD99B2A62FF7800ED78AF /* FriendsViewCell.swift */; };
@@ -30,6 +35,11 @@
 		DC3FFED32A617AC300F3E640 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC3FFED52A617AC300F3E640 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC90A7FE2A65B68000AF1197 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		DCD7277D2A69A5DB00A44624 /* AppConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
+		DCD7277F2A69ABCE00A44624 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		DCD727822A69AE0B00A44624 /* FriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsModel.swift; sourceTree = "<group>"; };
+		DCD727842A69B08700A44624 /* GroupsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsModel.swift; sourceTree = "<group>"; };
+		DCD727862A69BE1700A44624 /* PhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModel.swift; sourceTree = "<group>"; };
 		DCE972C62A6283DD00ED394A /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		DCE972C82A6283F300ED394A /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		DCFBD99B2A62FF7800ED78AF /* FriendsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewCell.swift; sourceTree = "<group>"; };
@@ -68,21 +78,68 @@
 		DC3FFEC62A617AC000F3E640 /* Course 1. Lesson 2 */ = {
 			isa = PBXGroup;
 			children = (
+				DCD727812A69ADF400A44624 /* Model */,
+				DCD7277C2A69A5C600A44624 /* Core */,
+				DCDA24302A66780C00B76DD4 /* PhotoFeature */,
+				DCDA242F2A6677DF00B76DD4 /* GroupsFeature */,
+				DCDA242E2A66779900B76DD4 /* FriendsFeature */,
 				DC3FFEC72A617AC000F3E640 /* AppDelegate.swift */,
 				DC3FFEC92A617AC000F3E640 /* SceneDelegate.swift */,
 				DC90A7FE2A65B68000AF1197 /* AuthViewController.swift */,
-				DC3FFECB2A617AC000F3E640 /* FriendsViewController.swift */,
-				DCE972C62A6283DD00ED394A /* GroupsViewController.swift */,
-				DCE972C82A6283F300ED394A /* PhotosViewController.swift */,
 				DC3FFED02A617AC300F3E640 /* Assets.xcassets */,
 				DC3FFED22A617AC300F3E640 /* LaunchScreen.storyboard */,
 				DC3FFED52A617AC300F3E640 /* Info.plist */,
-				DCFBD99B2A62FF7800ED78AF /* FriendsViewCell.swift */,
-				DCFBD99D2A6306D700ED78AF /* FriendDetailViewController.swift */,
-				DCFBD99F2A63185600ED78AF /* GroupViewCell.swift */,
-				DCFBD9A12A63220400ED78AF /* PhotoViewCell.swift */,
 			);
 			path = "Course 1. Lesson 2";
+			sourceTree = "<group>";
+		};
+		DCD7277C2A69A5C600A44624 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				DCD7277D2A69A5DB00A44624 /* AppConst.swift */,
+				DCD7277F2A69ABCE00A44624 /* NetworkService.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		DCD727812A69ADF400A44624 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DCD727822A69AE0B00A44624 /* FriendsModel.swift */,
+				DCD727842A69B08700A44624 /* GroupsModel.swift */,
+				DCD727862A69BE1700A44624 /* PhotosModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DCDA242E2A66779900B76DD4 /* FriendsFeature */ = {
+			isa = PBXGroup;
+			children = (
+				DC3FFECB2A617AC000F3E640 /* FriendsViewController.swift */,
+				DCFBD99D2A6306D700ED78AF /* FriendDetailViewController.swift */,
+				DCFBD99B2A62FF7800ED78AF /* FriendsViewCell.swift */,
+			);
+			name = FriendsFeature;
+			sourceTree = "<group>";
+		};
+		DCDA242F2A6677DF00B76DD4 /* GroupsFeature */ = {
+			isa = PBXGroup;
+			children = (
+				DCE972C62A6283DD00ED394A /* GroupsViewController.swift */,
+				DCFBD99F2A63185600ED78AF /* GroupViewCell.swift */,
+			);
+			name = GroupsFeature;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		DCDA24302A66780C00B76DD4 /* PhotoFeature */ = {
+			isa = PBXGroup;
+			children = (
+				DCE972C82A6283F300ED394A /* PhotosViewController.swift */,
+				DCFBD9A12A63220400ED78AF /* PhotoViewCell.swift */,
+			);
+			name = PhotoFeature;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,7 +221,12 @@
 				DC3FFECA2A617AC000F3E640 /* SceneDelegate.swift in Sources */,
 				DCE972C92A6283F300ED394A /* PhotosViewController.swift in Sources */,
 				DCFBD9A02A63185600ED78AF /* GroupViewCell.swift in Sources */,
+				DCD727832A69AE0B00A44624 /* FriendsModel.swift in Sources */,
 				DCFBD99E2A6306D700ED78AF /* FriendDetailViewController.swift in Sources */,
+				DCD727872A69BE1700A44624 /* PhotosModel.swift in Sources */,
+				DCD727852A69B08700A44624 /* GroupsModel.swift in Sources */,
+				DCD727802A69ABCE00A44624 /* NetworkService.swift in Sources */,
+				DCD7277E2A69A5DB00A44624 /* AppConst.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
