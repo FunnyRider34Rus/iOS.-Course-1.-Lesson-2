@@ -8,7 +8,7 @@
 import Foundation
 
 struct GroupsModel: Decodable {
-    var responce: Groups
+    var response: Groups
 }
 
 struct Groups: Decodable {

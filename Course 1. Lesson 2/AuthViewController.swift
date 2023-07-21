@@ -26,7 +26,6 @@ class AuthViewController: UIViewController {
         guard let url else {
             return
         }
-        print(url)
         webView.load(URLRequest(url: url))
     }
     
@@ -82,7 +81,6 @@ extension AuthViewController: WKNavigationDelegate {
         
         NetworkService.token = params["access_token"]!
         NetworkService.userID = params["user_id"]!
-        print(NetworkService.userID)
         decisionHandler(.cancel)
         webView.removeFromSuperview()
         setupScreens()
