@@ -9,22 +9,32 @@ import UIKit
 
 class PhotosViewController: UICollectionViewController {
     
+    private let request = NetworkService()
+    private var models: [Photo] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Photos"
-        collectionView.register(PhotoViewCell.self, forCellWithReuseIdentifier: "cell")
-        let request = NetworkService()
-        request.getPhoto()
+        collectionView.register(PhotoViewCell.self, forCellWithReuseIdentifier: "PhotoCell")
+        request.getPhoto { [weak self] photos in
+            self?.models = photos
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return 6
+        models.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PhotoViewCell
-        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as? PhotoViewCell else {
+            return UICollectionViewCell()
+        }
+        let model = models[indexPath.row]
+        cell.updateCell(model: model)
         return cell
     }
 }

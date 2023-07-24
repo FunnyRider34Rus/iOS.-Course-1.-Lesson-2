@@ -20,6 +20,16 @@ class PhotoViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateCell(model: Photo) {
+        DispatchQueue.global().async {
+            if let url = URL(string: model.sizes.first?.url ?? ""), let data = try? Data(contentsOf: url) {
+                DispatchQueue.main.async {
+                    self.photoView.image = UIImage(data: data)
+                }
+            }
+        }
+    }
+    
     private func setupView() {
         addSubview(photoView)
         setupConstraints()
