@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC0723AC2A756A60007D6430 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0723AB2A756A60007D6430 /* ProfileViewController.swift */; };
 		DC3FFEC82A617AC000F3E640 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3FFEC72A617AC000F3E640 /* AppDelegate.swift */; };
 		DC3FFECA2A617AC000F3E640 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3FFEC92A617AC000F3E640 /* SceneDelegate.swift */; };
 		DC3FFECC2A617AC000F3E640 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3FFECB2A617AC000F3E640 /* FriendsViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC0723AB2A756A60007D6430 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DC3FFEC42A617AC000F3E640 /* Course 1. Lesson 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Course 1. Lesson 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3FFEC72A617AC000F3E640 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC3FFEC92A617AC000F3E640 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				DC3FFECB2A617AC000F3E640 /* FriendsViewController.swift */,
 				DCFBD99D2A6306D700ED78AF /* FriendDetailViewController.swift */,
 				DCFBD99B2A62FF7800ED78AF /* FriendsViewCell.swift */,
+				DC0723AB2A756A60007D6430 /* ProfileViewController.swift */,
 			);
 			name = FriendsFeature;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				DCFBD9A22A63220400ED78AF /* PhotoViewCell.swift in Sources */,
 				DC3FFECC2A617AC000F3E640 /* FriendsViewController.swift in Sources */,
 				DC3FFEC82A617AC000F3E640 /* AppDelegate.swift in Sources */,
+				DC0723AC2A756A60007D6430 /* ProfileViewController.swift in Sources */,
 				DC3FFECA2A617AC000F3E640 /* SceneDelegate.swift in Sources */,
 				DCE972C92A6283F300ED394A /* PhotosViewController.swift in Sources */,
 				DCFBD9A02A63185600ED78AF /* GroupViewCell.swift in Sources */,

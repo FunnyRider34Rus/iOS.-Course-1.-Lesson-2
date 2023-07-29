@@ -63,7 +63,6 @@ class GroupViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             image.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            //image.widthAnchor.constraint(equalTo: image.widthAnchor),
             
             title.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 20),
             title.widthAnchor.constraint(equalTo: title.widthAnchor),
