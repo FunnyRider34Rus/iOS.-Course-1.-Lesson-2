@@ -50,7 +50,7 @@ class FriendsViewCell: UITableViewCell {
                 Data(contentsOf: url)
             {
                 DispatchQueue.main.async {
-                    self.imageView?.image = UIImage(data: data)
+                    self.image.image = UIImage(data: data)
                 }
             }
         }
@@ -74,6 +74,8 @@ class FriendsViewCell: UITableViewCell {
             
             onlineCircle.bottomAnchor.constraint(equalTo: image.bottomAnchor),
             onlineCircle.leadingAnchor.constraint(equalTo: image.leadingAnchor),
+            onlineCircle.widthAnchor.constraint(equalToConstant: 12),
+            onlineCircle.heightAnchor.constraint(equalToConstant: 12),
             
             text.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             text.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 40)

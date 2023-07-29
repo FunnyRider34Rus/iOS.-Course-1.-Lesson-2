@@ -18,6 +18,7 @@ class FriendsViewController: UITableViewController {
         title = "Friends"
         view.backgroundColor = .white
         tableView.backgroundColor = .white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "person"), style: .plain, target: self, action: #selector(profileTap))
         tableView.register(FriendsViewCell.self, forCellReuseIdentifier: "FriendCell")
         request.getFriends { [weak self] friends in
             self?.models = friends
@@ -39,6 +40,10 @@ class FriendsViewController: UITableViewController {
         let model = models[indexPath.row]
         cell.updateCell(model: model)
         return cell
+    }
+    
+    @objc func profileTap() {
+        
     }
 }
 
