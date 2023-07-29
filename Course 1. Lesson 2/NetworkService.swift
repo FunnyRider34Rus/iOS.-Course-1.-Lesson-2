@@ -71,4 +71,21 @@ final class NetworkService {
             }
         }.resume()
     }
+    
+    func getProfile(completion: @escaping(User?) -> Void) {
+        guard let url = URL(string: "https://api.vk.com/method/users.get?access_token=\(NetworkService.token)&field=photo_400_orig&v=5.131") else {
+            return
+        }
+        session.dataTask(with: url) { (data, _, error) in
+            guard let data = data else {
+                return
+            }
+            do {
+                let user = try JSONDecoder().decode(UserModel.self, from: data)
+                completion(user.responce.first)
+            } catch {
+                print(error)
+            }
+        }.resume()
+    }
 }

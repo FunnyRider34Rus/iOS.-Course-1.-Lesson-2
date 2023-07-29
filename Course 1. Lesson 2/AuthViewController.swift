@@ -10,6 +10,8 @@ import WebKit
 
 class AuthViewController: UIViewController {
     
+    let navBarViewController = UITabBarController()
+    
     private lazy var webView: WKWebView = {
         let webView = WKWebView(frame: view.bounds)
         webView.navigationDelegate = self
@@ -34,7 +36,6 @@ class AuthViewController: UIViewController {
     }
     
     private func setupScreens() {
-        let navBarViewController = UITabBarController()
         let friendsViewController = UINavigationController(rootViewController: FriendsViewController())
         let groupsViewController = UINavigationController(rootViewController: GroupsViewController())
         let photosViewController = UINavigationController(rootViewController: PhotosViewController(collectionViewLayout: UICollectionViewFlowLayout()))

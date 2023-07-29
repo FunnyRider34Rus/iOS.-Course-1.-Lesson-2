@@ -16,6 +16,10 @@ class FriendsViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Friends"
+        view.backgroundColor = .white
+        tableView.backgroundColor = .white
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.barTintColor = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "person"), style: .plain, target: self, action: #selector(profileTap))
         tableView.register(FriendsViewCell.self, forCellReuseIdentifier: "FriendCell")
         request.getFriends { [weak self] friends in
