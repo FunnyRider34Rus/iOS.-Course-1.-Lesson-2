@@ -16,11 +16,11 @@ class FriendsViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Friends"
-        view.backgroundColor = .white
-        tableView.backgroundColor = .white
-        navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.barTintColor = .white
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "person"), style: .plain, target: self, action: #selector(profileTap))
+        //view.backgroundColor = .white
+        //tableView.backgroundColor = .white
+        //navigationController?.navigationBar.tintColor = .black
+        //navigationController?.navigationBar.barTintColor = .white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person"), style: .plain, target: self, action: #selector(profileTap))
         tableView.register(FriendsViewCell.self, forCellReuseIdentifier: "FriendCell")
         request.getFriends { [weak self] friends in
             self?.models = friends
@@ -48,7 +48,7 @@ class FriendsViewController: UITableViewController {
         let animation = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         animation.type = .moveIn
-        animation.duration = 3
+        animation.duration = 1
         navigationController?.view.layer.add(animation, forKey: nil)
         navigationController?.pushViewController(ProfileViewController(), animated: false)
     }

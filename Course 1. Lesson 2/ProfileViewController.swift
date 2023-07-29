@@ -10,9 +10,10 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     private var networkService = NetworkService()
-    private var profileImage = UIImageView()
+    private var profileImage = UIImageView(image: UIImage(systemName: "person"))
     private var profileName: UILabel = {
         let label = UILabel()
+        label.text = "User Name"
         label.textColor = .black
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -20,7 +21,8 @@ class ProfileViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
-         super.viewDidLoad()
+        super.viewDidLoad()
+        title = "Profile"
         view.backgroundColor = .white
         setupViews()
         networkService.getProfile { [weak self] user in
@@ -40,7 +42,7 @@ class ProfileViewController: UIViewController {
                 }
             }
         }
-        DispatchQueue.main.sync {
+        DispatchQueue.main.async {
             self.profileName.text = (model.firstName ?? "") + " " + (model.lastName ?? "")
         }
     }
@@ -56,11 +58,11 @@ class ProfileViewController: UIViewController {
         profileName.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            profileImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            profileImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             profileImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            profileName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            profileName.topAnchor.constraint(equalTo: profileName.bottomAnchor, constant: 20)
+            profileName.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 30),
+            profileName.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
 }
