@@ -16,6 +16,7 @@ class PhotosViewController: UICollectionViewController {
         super.viewDidLoad()
         
         title = "Photos"
+        view.backgroundColor = Theme.currentTheme.backgroundColor
         collectionView.register(PhotoViewCell.self, forCellWithReuseIdentifier: "PhotoCell")
         request.getPhoto { [weak self] photos in
             self?.models = photos

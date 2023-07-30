@@ -14,19 +14,43 @@ class ProfileViewController: UIViewController {
     private var profileName: UILabel = {
         let label = UILabel()
         label.text = "User Name"
-        label.textColor = .black
+        label.textColor = Theme.currentTheme.textColor
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
     }()
     
+    private var themeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Night theme"
+        label.textColor = Theme.currentTheme.textColor
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private var themeSwitch: UISwitch = {
+        let mySwitch = UISwitch()
+        mySwitch.isOn = false
+        mySwitch.isEnabled = true
+        return mySwitch
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
-        view.backgroundColor = .white
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        themeSwitch.addTarget(self, action: #selector(switchState(_:)), for: .valueChanged)
         setupViews()
         networkService.getProfile { [weak self] user in
             self?.updateData(model: user)
+        }
+    }
+    
+    @objc func switchState(_ sender: UISwitch!) {
+        if sender.isOn {
+            Theme.currentTheme = NightTheme()
+        } else {
+            Theme.currentTheme = DayTheme()
         }
     }
     
@@ -50,19 +74,29 @@ class ProfileViewController: UIViewController {
     private func setupViews() {
         view.addSubview(profileImage)
         view.addSubview(profileName)
+        view.addSubview(themeLabel)
+        view.addSubview(themeSwitch)
         setupConstraints()
     }
     
     private func setupConstraints() {
         profileImage.translatesAutoresizingMaskIntoConstraints = false
         profileName.translatesAutoresizingMaskIntoConstraints = false
+        themeLabel.translatesAutoresizingMaskIntoConstraints = false
+        themeSwitch.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             profileImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             profileImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             profileName.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 30),
-            profileName.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            profileName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            themeLabel.topAnchor.constraint(equalTo: profileName.bottomAnchor, constant: 60),
+            themeLabel.leadingAnchor.constraint(equalTo: profileName.leadingAnchor),
+            
+            themeSwitch.centerYAnchor.constraint(equalTo: themeLabel.centerYAnchor),
+            themeSwitch.leadingAnchor.constraint(equalTo: themeLabel.trailingAnchor, constant: 20)
         ])
     }
 }

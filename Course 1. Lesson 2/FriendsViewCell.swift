@@ -14,7 +14,7 @@ class FriendsViewCell: UITableViewCell {
     private var text: UILabel = {
         let text = UILabel()
         text.text = "Friend 1"
-        text.textColor = .black
+        text.textColor = Theme.currentTheme.textColor
         return text
     }()
     
@@ -27,7 +27,7 @@ class FriendsViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .clear
+        backgroundColor = Theme.currentTheme.backgroundColor
         setupViews()
     }
     

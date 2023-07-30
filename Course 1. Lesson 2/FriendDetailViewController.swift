@@ -13,6 +13,6 @@ class FriendDetailViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Friend detail"
-        view.backgroundColor = .white
+        view.backgroundColor = Theme.currentTheme.backgroundColor
     }
 }

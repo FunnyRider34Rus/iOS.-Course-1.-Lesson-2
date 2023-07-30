@@ -16,10 +16,8 @@ class FriendsViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Friends"
-        //view.backgroundColor = .white
-        //tableView.backgroundColor = .white
-        //navigationController?.navigationBar.tintColor = .black
-        //navigationController?.navigationBar.barTintColor = .white
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        tableView.backgroundColor = Theme.currentTheme.backgroundColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person"), style: .plain, target: self, action: #selector(profileTap))
         tableView.register(FriendsViewCell.self, forCellReuseIdentifier: "FriendCell")
         request.getFriends { [weak self] friends in
@@ -29,6 +27,13 @@ class FriendsViewController: UITableViewController {
             }
             
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        tableView.backgroundColor = Theme.currentTheme.backgroundColor
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

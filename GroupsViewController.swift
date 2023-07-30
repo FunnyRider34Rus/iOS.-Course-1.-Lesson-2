@@ -16,8 +16,8 @@ class GroupsViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Groups"
-        view.backgroundColor = .white
-        tableView.backgroundColor = .white
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        tableView.backgroundColor = Theme.currentTheme.backgroundColor
         tableView.register(GroupViewCell.self, forCellReuseIdentifier: "GroupCell")
         request.getGroups { [weak self] groups in
             self?.models = groups

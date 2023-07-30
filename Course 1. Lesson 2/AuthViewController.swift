@@ -50,7 +50,7 @@ class AuthViewController: UIViewController {
         let controllers = [friendsViewController, groupsViewController, photosViewController]
                 
         navBarViewController.viewControllers = controllers
-        navBarViewController.tabBar.backgroundColor = .white
+        navBarViewController.tabBar.backgroundColor = Theme.currentTheme.backgroundColor
                 
         guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                     let firstWindow = firstScene.windows.first else {

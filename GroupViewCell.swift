@@ -14,14 +14,14 @@ class GroupViewCell: UITableViewCell {
     private var title: UILabel = {
         let text = UILabel()
         text.text = "Name"
-        text.textColor = .black
+        text.textColor = Theme.currentTheme.textColor
         return text
     }()
     
     private var subtitle: UILabel = {
         let subtitle = UILabel()
         subtitle.text = "Description"
-        subtitle.textColor = .black
+        subtitle.textColor = Theme.currentTheme.textColor
         return subtitle
     }()
     
