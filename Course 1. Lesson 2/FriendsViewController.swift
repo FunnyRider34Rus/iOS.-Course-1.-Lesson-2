@@ -10,23 +10,21 @@ import UIKit
 class FriendsViewController: UITableViewController {
     
     private let request = NetworkService()
+    private var cache = Cache()
     private var models: [Friend] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        models = cache.fetchFriends()
+        tableView.reloadData()
         title = "Friends"
         view.backgroundColor = Theme.currentTheme.backgroundColor
         tableView.backgroundColor = Theme.currentTheme.backgroundColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person"), style: .plain, target: self, action: #selector(profileTap))
         tableView.register(FriendsViewCell.self, forCellReuseIdentifier: "FriendCell")
-        request.getFriends { [weak self] friends in
-            self?.models = friends
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
-            
-        }
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(update), for: .valueChanged)
+        getFriends()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +47,22 @@ class FriendsViewController: UITableViewController {
         return cell
     }
     
+    func getFriends() {
+        request.getFriends { [weak self] result in
+            switch result {
+                case .success(let friends): self?.models = friends
+                    self?.cache.addFriens(friends: friends)
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                case .failure(_): self?.models = self?.cache.fetchFriends() ?? []
+                    DispatchQueue.main.async {
+                        self?.showAlert()
+                    }
+            }
+        }
+    }
+    
     @objc func profileTap() {
         let animation = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
@@ -56,6 +70,37 @@ class FriendsViewController: UITableViewController {
         animation.duration = 1
         navigationController?.view.layer.add(animation, forKey: nil)
         navigationController?.pushViewController(ProfileViewController(), animated: false)
+    }
+    
+    @objc func update() {
+        request.getFriends { [weak self] result in
+            switch result {
+            case .success(let friends):
+                self?.models = friends
+                self?.cache.addFriens(friends: friends)
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            case .failure(_):
+                self?.models = self?.cache.fetchFriends() ?? []
+                DispatchQueue.main.async {
+                    self?.showAlert()
+                }
+                DispatchQueue.main.async {
+                    self?.refreshControl?.endRefreshing()
+                }
+            }
+        }
+    }
+}
+
+private extension FriendsViewController {
+    
+    func showAlert() {
+        let date = DateConverter.getDate(date: cache.fetchFriendsDate())
+        let alert = UIAlertController(title: "Loading data error", message: "Не удалось обновить спискок друзей. Данные актуальны на \(date)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
 

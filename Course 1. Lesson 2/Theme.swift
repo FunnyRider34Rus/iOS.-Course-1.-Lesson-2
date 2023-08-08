@@ -17,7 +17,6 @@ protocol AppTheme {
     var textColor: UIColor { get }
     var titleColor: UIColor { get }
     var subtitleColor: UIColor { get }
-    var type: AllAppTheme { get }
 }
 
 final class Theme {
@@ -29,7 +28,6 @@ final class DayTheme: AppTheme {
     var textColor: UIColor = .black
     var titleColor: UIColor = .black
     var subtitleColor: UIColor = .gray
-    var type: AllAppTheme = .day
 }
 
 final class NightTheme: AppTheme {
@@ -37,5 +35,4 @@ final class NightTheme: AppTheme {
     var textColor: UIColor = .white
     var titleColor: UIColor = .white
     var subtitleColor: UIColor = .gray
-    var type: AllAppTheme = .night
 }

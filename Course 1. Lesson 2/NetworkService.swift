@@ -14,7 +14,7 @@ final class NetworkService {
     static var token = ""
     static var userID = ""
     
-    func getFriends(completion: @escaping([Friend]) -> Void) {
+    func getFriends(completion: @escaping(Result<[Friend], Error>) -> Void) {
         guard let url = URL(string: "https://api.vk.com/method/friends.get?user_id=\(NetworkService.userID)&access_token=\(NetworkService.token)&fields=photo_50,online&v=5.131")
         else {
             return
@@ -22,14 +22,19 @@ final class NetworkService {
         
         session.dataTask(with: url) { (data, _, error) in
             guard let data = data else {
+                completion(.failure(Error.self as! Error))
+                return
+            }
+            if let error = error {
+                completion(.failure(error))
                 return
             }
             do {
                 let friends = try JSONDecoder().decode(FriendsModel.self, from: data)
-                completion(friends.response.items)
+                completion(.success(friends.response.items))
                 //print(friends)
             } catch {
-                print(error)
+                completion(.failure(error))
             }
         }.resume()
     }

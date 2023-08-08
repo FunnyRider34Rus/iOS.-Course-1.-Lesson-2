@@ -37,7 +37,7 @@ class GroupViewCell: UITableViewCell {
     
     func updateCell(model: Group) {
         title.text = model.name
-        subtitle.text = model.description
+        subtitle.text = model.descr
         DispatchQueue.global().async {
             if let url = URL(string: model.photo ?? ""), let data = try?
                 Data(contentsOf: url) {
