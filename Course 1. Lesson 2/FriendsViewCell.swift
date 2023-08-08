@@ -9,6 +9,8 @@ import UIKit
 
 class FriendsViewCell: UITableViewCell {
     
+    var tap: ((String?, UIImage?) -> Void)?
+    
     private let image = UIImageView(image: UIImage(systemName: "person"))
     
     private var text: UILabel = {
@@ -28,6 +30,8 @@ class FriendsViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Theme.currentTheme.backgroundColor
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(cellClick))
+        addGestureRecognizer(recognizer)
         setupViews()
     }
     
@@ -80,5 +84,9 @@ class FriendsViewCell: UITableViewCell {
             text.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             text.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 40)
         ])
+    }
+    
+    @objc private func cellClick() {
+        tap?(text.text, image.image)
     }
 }

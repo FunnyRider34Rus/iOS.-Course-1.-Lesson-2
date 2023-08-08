@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FriendsViewController: UITableViewController {
+final class FriendsViewController: UITableViewController {
     
     private let request = NetworkService()
     private var cache = Cache()
@@ -44,6 +44,9 @@ class FriendsViewController: UITableViewController {
         }
         let model = models[indexPath.row]
         cell.updateCell(model: model)
+        cell.tap = {
+            [weak self]  text, photo in self?.navigationController?.pushViewController(ProfileViewController(name: text, photo: photo, isUserProfile: false), animated: true)
+        }
         return cell
     }
     
@@ -61,15 +64,6 @@ class FriendsViewController: UITableViewController {
                     }
             }
         }
-    }
-    
-    @objc func profileTap() {
-        let animation = CATransition()
-        animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-        animation.type = .moveIn
-        animation.duration = 1
-        navigationController?.view.layer.add(animation, forKey: nil)
-        navigationController?.pushViewController(ProfileViewController(), animated: false)
     }
     
     @objc func update() {
@@ -101,6 +95,15 @@ private extension FriendsViewController {
         let alert = UIAlertController(title: "Loading data error", message: "Не удалось обновить спискок друзей. Данные актуальны на \(date)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func profileTap() {
+        let animation = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        animation.type = .moveIn
+        animation.duration = 1
+        navigationController?.view.layer.add(animation, forKey: nil)
+        navigationController?.pushViewController(ProfileViewController(isUserProfile: true), animated: false)
     }
 }
 

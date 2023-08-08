@@ -11,6 +11,8 @@ class ProfileViewController: UIViewController {
     
     private var networkService = NetworkService()
     private var profileImage = UIImageView(image: UIImage(systemName: "person"))
+    private var isUserProfile: Bool
+    
     private var profileName: UILabel = {
         let label = UILabel()
         label.text = "User Name"
@@ -29,11 +31,22 @@ class ProfileViewController: UIViewController {
     }()
     
     private var themeSwitch: UISwitch = {
-        let mySwitch = UISwitch()
-        mySwitch.isOn = false
-        mySwitch.isEnabled = true
-        return mySwitch
+        let mSwitch = UISwitch()
+        mSwitch.isOn = false
+        mSwitch.isEnabled = true
+        return mSwitch
     }()
+    
+    init(name: String? = nil, photo: UIImage? = nil, isUserProfile: Bool) {
+            self.isUserProfile = isUserProfile
+            super.init(nibName: nil, bundle: nil)
+            profileName.text = name
+            profileImage.image = photo
+    }
+        
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +54,12 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = Theme.currentTheme.backgroundColor
         themeSwitch.addTarget(self, action: #selector(switchState(_:)), for: .valueChanged)
         setupViews()
-        networkService.getProfile { [weak self] user in
-            self?.updateData(model: user)
+        if isUserProfile {
+            networkService.getProfile { [weak self] user in
+                self?.updateData(model: user)
+            }
+        } else {
+            themeSwitch.isHidden = true
         }
     }
     
