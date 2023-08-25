@@ -20,7 +20,7 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = Theme.currentTheme.backgroundColor
         setupViews()
         
         let url = URL(string: "https://oauth.vk.com/authorize?client_id=\(AppConst.appCode)&redirect_uri=https://oauth.vk.com/blank.html&display=mobile&response_type=token")

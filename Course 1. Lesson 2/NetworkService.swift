@@ -25,10 +25,7 @@ final class NetworkService {
                 completion(.failure(Error.self as! Error))
                 return
             }
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
+
             do {
                 let friends = try JSONDecoder().decode(FriendsModel.self, from: data)
                 completion(.success(friends.response.items))
